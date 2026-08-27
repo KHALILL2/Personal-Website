@@ -277,3 +277,34 @@ if (mobileMenuToggle && mobileMenu) {
         }
     });
 }
+
+// ===================================
+// Theme Toggle
+// ===================================
+
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+    // Check for saved theme preference or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+    updateThemeIcon(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+}
+
+function updateThemeIcon(theme) {
+    const toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+    const icon = toggle.querySelector('i');
+    if (icon) {
+        icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+}
