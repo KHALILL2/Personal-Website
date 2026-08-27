@@ -10,7 +10,7 @@
 
 ## Overview
 
-Welcome to my digital portfolio—a showcase of my work as a **Communications Engineer** specializing in **Cybersecurity** and **Full-Stack Development**. This site demonstrates my commitment to building secure, elegant systems that prioritize both functionality and user experience.
+Welcome to my digital portfolio - a showcase of my work as an **Information Technology Undergraduate & Cybersecurity Specialist** specializing in **Cybersecurity** and **Full-Stack Development**. This site demonstrates my commitment to building secure, elegant systems that prioritize both functionality and user experience.
 
 Based in Alexandria, Egypt, I work at the intersection of security engineering and web development, focusing on system hardening, malware analysis, IoT automation, and building resilient web applications.
 
@@ -32,7 +32,7 @@ The site features a sophisticated **liquid glass** design inspired by modern App
 
 ### Technical Approach
 
-**Zero-Framework Philosophy:** Built with vanilla HTML5, CSS3, and JavaScript—no frameworks, no build tools, no unnecessary dependencies. This architectural decision prioritizes:
+**Zero-Framework Philosophy:** Built with vanilla HTML5, CSS3, and JavaScript - no frameworks, no build tools, no unnecessary dependencies. This architectural decision prioritizes:
 
 - **Performance:** Sub-second load times with no framework overhead
 - **Security:** Minimal attack surface; no vulnerable dependencies; CSP headers implemented
@@ -46,7 +46,7 @@ The site features a sophisticated **liquid glass** design inspired by modern App
 
 ### Directory Structure
 
-```
+```text
 Personal Website/
 ├── index.html                 # Main landing page
 ├── robots.txt                 # Search engine crawler rules
@@ -114,7 +114,7 @@ A comprehensive course management system built for Borg Al Arab Technological Un
 ### NEXUS Technical Team
 **IoT & Hardware Innovation**
 
-Founded and lead a specialized engineering team pioneering smart campus solutions. We integrate hardware and software to create intelligent automation systems—from IoT-enabled turnstiles to LMS-synchronized attendance tracking.
+Founded and lead a specialized engineering team pioneering smart campus solutions. We integrate hardware and software to create intelligent automation systems - from IoT-enabled turnstiles to LMS-synchronized attendance tracking.
 
 - **Role:** Founder & Team Lead
 - **Team Size:** 5-8 Engineers

@@ -25,34 +25,55 @@ window.addEventListener('unhandledrejection', (e) => {
   console.error('Unhandled Promise Rejection:', e.reason);
 });
 
-// Navbar scroll effect
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+// ===================================
+// Unified, Passive Scroll & RAF Handler
+// ===================================
 
-function handleNavbarScroll() {
-    const currentScroll = window.pageYOffset;
+const navbar = document.querySelector('.navbar');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+let isScrolling = false;
+
+function updateOnScroll() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    // 1. Navbar scrolled class toggle
+    if (navbar) {
+        if (scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
     
-    lastScroll = currentScroll;
+    // 2. Active section highlight
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 120;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+    });
+    
+    isScrolling = false;
 }
 
-// Use requestAnimationFrame for smooth scrolling performance
-let ticking = false;
-
+// Single scroll listener with passive: true
 window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            handleNavbarScroll();
-            ticking = false;
-        });
-        ticking = true;
+    if (!isScrolling) {
+        window.requestAnimationFrame(updateOnScroll);
+        isScrolling = true;
     }
-});
+}, { passive: true });
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -78,44 +99,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Active navigation highlighting
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-function highlightActiveNav() {
-    const scrollY = window.pageYOffset;
-    
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                    link.style.color = '#ffffff';
-                } else {
-                    link.style.color = '';
-                }
-            });
-        }
-    });
-}
-
-// Throttle scroll events for performance
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-    if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
-    }
-    
-    scrollTimeout = window.requestAnimationFrame(() => {
-        highlightActiveNav();
-    });
-});
-
 // Lazy load images when they come into view (for future use)
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -136,28 +119,6 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
-
-// Add hover effect to project cards
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-4px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
-
-// Smooth hover animations for buttons
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-1px)';
-    });
-    
-    btn.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
 
 // Console message for developers
 console.log(
