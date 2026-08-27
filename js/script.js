@@ -134,7 +134,7 @@ console.log(
     'color: #666666; font-size: 12px;'
 );
 console.log(
-    '%c💼 Looking for collaboration? Reach out: khalill21652006@gmail.com',
+    '%c💼 Looking for collaboration? Reach out: khalil.muhammad.personal@gmail.com',
     'color: #ffffff; font-size: 12px;'
 );
 

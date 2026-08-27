@@ -362,7 +362,7 @@ Buttons: blur(40px) saturate(200%)
 
 Currently available for new opportunities and collaborations.
 
-- Email: [khalill21652006@gmail.com](mailto:khalill21652006@gmail.com)
+- Email: [khalil.muhammad.personal@gmail.com](mailto:khalil.muhammad.personal@gmail.com)
 - LinkedIn: [linkedin.com/in/khalil-muhammad-ti](https://www.linkedin.com/in/khalil-muhammad-ti)
 - GitHub: [github.com/KHALILL2](https://github.com/KHALILL2)
 - Linktree: [linktr.ee/khalill2](https://linktr.ee/khalill2)
