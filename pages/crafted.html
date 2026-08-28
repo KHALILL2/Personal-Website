@@ -17,8 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- FontAwesome: Non-blocking load with print/onload trick -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/Crafted_logo-removebg-preview.png">
@@ -34,11 +35,46 @@
             <a href="../index.html" class="logo">khalil</a>
             <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_projects">Back to Projects</span></a>
             <div class="nav-controls">
-                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">AR</button>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <!-- Language Dropdown -->
+                <div class="dropdown" id="langDropdown">
+                    <button class="dropdown-toggle lang-toggle" id="langToggle" aria-label="Language selection" aria-haspopup="true" aria-expanded="false" type="button">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
+                        <span id="currentLangLabel">EN</span>
+                        <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu" id="langMenu" role="menu" aria-labelledby="langToggle">
+                        <button class="dropdown-item" data-lang="en" role="menuitem" type="button">
+                            <span class="item-text">English</span>
+                        </button>
+                        <button class="dropdown-item" data-lang="ar" role="menuitem" type="button">
+                            <span class="item-text">العربية</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Theme Dropdown -->
+                <div class="dropdown" id="themeDropdown">
+                    <button class="dropdown-toggle theme-toggle" id="themeToggle" aria-label="Theme selection" aria-haspopup="true" aria-expanded="false" type="button">
+                        <i class="fas fa-moon" id="currentThemeIcon" aria-hidden="true"></i>
+                        <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu" id="themeMenu" role="menu" aria-labelledby="themeToggle">
+                        <button class="dropdown-item" data-theme-val="dark" role="menuitem" type="button">
+                            <i class="fas fa-moon" aria-hidden="true"></i>
+                            <span class="item-text" data-i18n="theme_dark">Dark</span>
+                        </button>
+                        <button class="dropdown-item" data-theme-val="light" role="menuitem" type="button">
+                            <i class="fas fa-sun" aria-hidden="true"></i>
+                            <span class="item-text" data-i18n="theme_light">Light</span>
+                        </button>
+                        <button class="dropdown-item" data-theme-val="system" role="menuitem" type="button">
+                            <i class="fas fa-desktop" aria-hidden="true"></i>
+                            <span class="item-text" data-i18n="theme_system">System</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>

@@ -26,54 +26,66 @@ window.addEventListener('unhandledrejection', (e) => {
 });
 
 // ===================================
-// Unified, Passive Scroll & RAF Handler
+// IntersectionObserver: Navbar & Scrollspy
 // ===================================
 
 const navbar = document.querySelector('.navbar');
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-let isScrolling = false;
+// --- Navbar ".scrolled" state ---
+// A sentinel element at the top of the page triggers the navbar state.
+// When it leaves the viewport, the navbar gets the .scrolled class.
+const navbarSentinel = document.createElement('div');
+navbarSentinel.setAttribute('aria-hidden', 'true');
+navbarSentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:50px;pointer-events:none;';
+document.body.prepend(navbarSentinel);
 
-function updateOnScroll() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // 1. Navbar scrolled class toggle
-    if (navbar) {
-        if (scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-    
-    // 2. Active section highlight
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 120;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
+if (navbar) {
+    const navbarObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                // When the sentinel is NOT intersecting (scrolled past 50px), add .scrolled
+                if (entry.isIntersecting) {
+                    navbar.classList.remove('scrolled');
                 } else {
-                    link.classList.remove('active');
+                    navbar.classList.add('scrolled');
                 }
             });
-        }
-    });
-    
-    isScrolling = false;
+        },
+        { threshold: 0 }
+    );
+    navbarObserver.observe(navbarSentinel);
 }
 
-// Single scroll listener with passive: true
-window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-        window.requestAnimationFrame(updateOnScroll);
-        isScrolling = true;
-    }
-}, { passive: true });
+// --- Active Section Highlighting (Scrollspy) ---
+// Each section is observed. The one most recently intersecting gets highlighted.
+if (sections.length > 0 && navLinks.length > 0) {
+    const scrollspyObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.getAttribute('id');
+                    navLinks.forEach((link) => {
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        },
+        {
+            // rootMargin: top offset accounts for the fixed navbar (negative),
+            // bottom offset ensures only the section near the top third triggers.
+            rootMargin: '-120px 0px -60% 0px',
+            threshold: 0
+        }
+    );
+
+    sections.forEach((section) => scrollspyObserver.observe(section));
+}
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -294,6 +306,9 @@ const i18nDictionary = {
     btn_send_email: "Send an Email",
     btn_my_links: "My Links",
     btn_pgp_key: "Public PGP Key",
+    theme_dark: "Dark",
+    theme_light: "Light",
+    theme_system: "System",
     footer_rights: "© 2026 Khalil Muhammad. All rights reserved.",
     back_to_projects: "Back to Projects",
     links_page_title: "Khalil Muhammad",
@@ -352,6 +367,9 @@ const i18nDictionary = {
     btn_send_email: "إرسال بريد إلكتروني",
     btn_my_links: "روابطي",
     btn_pgp_key: "مفتاح PGP العام",
+    theme_dark: "داكن",
+    theme_light: "فاتح",
+    theme_system: "النظام",
     footer_rights: "© 2026 خليل محمد. جميع الحقوق محفوظة.",
     back_to_projects: "العودة للمشاريع",
     links_page_title: "خليل محمد",
@@ -367,7 +385,10 @@ const i18nDictionary = {
   }
 };
 
+// ============================================
 // 1. Theme Controller
+// ============================================
+
 function getStoredTheme() {
   return localStorage.getItem(THEME_KEY) || 'dark';
 }
@@ -379,46 +400,44 @@ function applyTheme(mode) {
   }
   document.documentElement.setAttribute('data-theme', effectiveTheme);
   document.documentElement.setAttribute('data-theme-mode', mode);
-  updateThemeIcon(mode, effectiveTheme);
+  updateThemeDropdownUI(mode, effectiveTheme);
 }
 
-function cycleTheme() {
-  const currentMode = localStorage.getItem(THEME_KEY) || 'dark';
-  let nextMode = 'dark';
-  if (currentMode === 'dark') nextMode = 'light';
-  else if (currentMode === 'light') nextMode = 'system';
-  else nextMode = 'dark';
-
-  localStorage.setItem(THEME_KEY, nextMode);
-  applyTheme(nextMode);
-}
-
-function updateThemeIcon(mode, effectiveTheme) {
-  const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
-  const icon = toggle.querySelector('i');
-  if (!icon) return;
-
-  if (mode === 'system') {
-    icon.className = 'fas fa-desktop';
-    toggle.setAttribute('aria-label', `Theme: System (${effectiveTheme})`);
-  } else if (mode === 'light') {
-    icon.className = 'fas fa-sun';
-    toggle.setAttribute('aria-label', 'Theme: Light');
-  } else {
-    icon.className = 'fas fa-moon';
-    toggle.setAttribute('aria-label', 'Theme: Dark');
+function updateThemeDropdownUI(mode, effectiveTheme) {
+  const currentThemeIcon = document.getElementById('currentThemeIcon');
+  if (currentThemeIcon) {
+    if (mode === 'system') {
+      currentThemeIcon.className = 'fas fa-desktop';
+    } else if (effectiveTheme === 'light') {
+      currentThemeIcon.className = 'fas fa-sun';
+    } else {
+      currentThemeIcon.className = 'fas fa-moon';
+    }
   }
+
+  document.querySelectorAll('#themeMenu .dropdown-item').forEach(item => {
+    const val = item.getAttribute('data-theme-val');
+    if (val === mode) {
+      item.classList.add('selected');
+      item.setAttribute('aria-selected', 'true');
+    } else {
+      item.classList.remove('selected');
+      item.setAttribute('aria-selected', 'false');
+    }
+  });
 }
 
-// System theme listener
+// System theme change listener
 systemDarkMedia.addEventListener('change', () => {
   if (getStoredTheme() === 'system') {
     applyTheme('system');
   }
 });
 
+// ============================================
 // 2. Language Controller
+// ============================================
+
 function getStoredLang() {
   return localStorage.getItem(LANG_KEY) || 'en';
 }
@@ -430,40 +449,113 @@ function applyLanguage(lang) {
   document.documentElement.setAttribute('lang', targetLang);
   document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
 
-  // Update i18n text nodes
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (i18nDictionary[targetLang] && i18nDictionary[targetLang][key]) {
-      el.innerHTML = i18nDictionary[targetLang][key];
+  const currentLangLabel = document.getElementById('currentLangLabel');
+  if (currentLangLabel) {
+    currentLangLabel.textContent = targetLang.toUpperCase();
+  }
+
+  document.querySelectorAll('#langMenu .dropdown-item').forEach(item => {
+    const val = item.getAttribute('data-lang');
+    if (val === targetLang) {
+      item.classList.add('selected');
+      item.setAttribute('aria-selected', 'true');
+    } else {
+      item.classList.remove('selected');
+      item.setAttribute('aria-selected', 'false');
     }
   });
 
-  // Update language toggle button label
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    langToggle.textContent = targetLang === 'ar' ? 'EN' : 'عربي';
-    langToggle.setAttribute('aria-label', targetLang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية');
-  }
+  // Update i18n text nodes
+  const dict = i18nDictionary[targetLang] || i18nDictionary.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict && dict[key]) {
+      el.innerHTML = dict[key];
+    }
+  });
 }
 
-function toggleLanguage() {
-  const currentLang = getStoredLang();
-  const nextLang = currentLang === 'ar' ? 'en' : 'ar';
-  localStorage.setItem(LANG_KEY, nextLang);
-  applyLanguage(nextLang);
+// ============================================
+// 3. Dropdown Menu Interaction Manager
+// ============================================
+
+function closeAllDropdowns() {
+  document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
+    menu.classList.remove('active');
+  });
+  document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+    dropdown.classList.remove('open');
+    const toggleBtn = dropdown.querySelector('.dropdown-toggle');
+    if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+  });
 }
 
-// Initialize on page load
-const themeToggle = document.getElementById('themeToggle');
-if (themeToggle) {
-  applyTheme(getStoredTheme());
-  themeToggle.addEventListener('click', cycleTheme);
+function initDropdowns() {
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  dropdowns.forEach(dropdown => {
+    const toggleBtn = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+
+    if (!toggleBtn || !menu) return;
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isCurrentlyActive = menu.classList.contains('active');
+
+      closeAllDropdowns();
+
+      if (!isCurrentlyActive) {
+        menu.classList.add('active');
+        dropdown.classList.add('open');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', () => {
+    closeAllDropdowns();
+  });
+
+  // Close dropdowns on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllDropdowns();
+    }
+  });
+
+  // Direct Language Selection Items
+  document.querySelectorAll('#langMenu .dropdown-item').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const selectedLang = btn.getAttribute('data-lang');
+      if (selectedLang) {
+        localStorage.setItem(LANG_KEY, selectedLang);
+        applyLanguage(selectedLang);
+        closeAllDropdowns();
+      }
+    });
+  });
+
+  // Direct Theme Selection Items
+  document.querySelectorAll('#themeMenu .dropdown-item').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const selectedTheme = btn.getAttribute('data-theme-val');
+      if (selectedTheme) {
+        localStorage.setItem(THEME_KEY, selectedTheme);
+        applyTheme(selectedTheme);
+        closeAllDropdowns();
+      }
+    });
+  });
 }
 
-const langToggle = document.getElementById('langToggle');
-if (langToggle) {
-  applyLanguage(getStoredLang());
-  langToggle.addEventListener('click', toggleLanguage);
-} else {
-  applyLanguage(getStoredLang());
-}
+// ============================================
+// Initialization on Page Load
+// ============================================
+
+applyTheme(getStoredTheme());
+applyLanguage(getStoredLang());
+initDropdowns();
