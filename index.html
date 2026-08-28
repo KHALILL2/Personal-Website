@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; connect-src 'self' https://khalill2.github.io;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khalil Muhammad - Information Technology Undergraduate & Cybersecurity Specialist</title>
   
@@ -32,10 +32,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" as="style">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" as="style">
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -76,29 +74,34 @@
     <div class="navbar-content">
       <a href="index.html" class="logo" aria-label="Khalil - Home">khalil</a>
       <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#work" data-i18n="nav_work">Work</a></li>
+        <li><a href="#cybersecurity" data-i18n="nav_cybersecurity">Security</a></li>
+        <li><a href="#leadership" data-i18n="nav_leadership">Leadership</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
-      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
+      <div class="nav-controls">
+        <button class="lang-toggle" id="langToggle" aria-label="Toggle language">AR</button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
-      <li><a href="#work" class="mobile-nav-link">Work</a></li>
-      <li><a href="#leadership" class="mobile-nav-link">Leadership</a></li>
-      <li><a href="#about" class="mobile-nav-link">About</a></li>
-      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      <li><a href="#work" class="mobile-nav-link" data-i18n="nav_work">Work</a></li>
+      <li><a href="#cybersecurity" class="mobile-nav-link" data-i18n="nav_cybersecurity">Security</a></li>
+      <li><a href="#leadership" class="mobile-nav-link" data-i18n="nav_leadership">Leadership</a></li>
+      <li><a href="#about" class="mobile-nav-link" data-i18n="nav_about">About</a></li>
+      <li><a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">Contact</a></li>
     </ul>
   </div>
 
@@ -108,60 +111,166 @@
     <!-- Hero Section -->
     <header class="hero">
       <div>
-        <h1>Building secure systems<br>and elegant interfaces</h1>
-        <p>Information Technology Undergraduate & Cybersecurity Specialist focused on system hardening, malware analysis, and full-stack development. Based in Alexandria, Egypt.</p>
-        <a href="#work" class="btn">View Work</a>
-        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        <h1 data-i18n="hero_title">Building secure systems<br>and elegant interfaces</h1>
+        <p data-i18n="hero_subtitle">Information Technology Undergraduate & Cybersecurity Specialist focused on system hardening, malware analysis, and full-stack development. Based in Alexandria, Egypt.</p>
+        <a href="#work" class="btn" data-i18n="btn_view_work">View Work</a>
+        <a href="#contact" class="btn btn-secondary" data-i18n="btn_get_in_touch">Get in Touch</a>
       </div>
     </header>
 
+    <!-- Projects Section with 3 Distinct Categories -->
     <section id="work" aria-labelledby="work-heading">
-      <h2 id="work-heading">Projects</h2>
+      <h2 id="work-heading" data-i18n="projects_title">Featured Work</h2>
       <div class="projects">
-        <div class="project-card">
-          <h3>Smart Turnstile Access Gate</h3>
-          <p>Intelligent campus access control system integrating RFID authentication with automated gate control. Real-time student verification synced with the university LMS for automated attendance tracking.</p>
-          <div class="tags">
-            <span class="tag">Raspberry Pi</span>
-            <span class="tag">Arduino Mega</span>
-            <span class="tag">RFID</span>
-            <span class="tag">Python</span>
+
+        <!-- Category 1: Hardware and IoT -->
+        <div class="project-category">
+          <div class="category-header">
+            <i class="fas fa-microchip category-icon" aria-hidden="true"></i>
+            <h3 class="category-title" data-i18n="cat_hardware_title">Hardware and IoT</h3>
+          </div>
+          <div class="projects-grid">
+            <div class="project-card featured-project">
+              <div class="card-badge" data-i18n="badge_featured">Featured Project</div>
+              <h4 data-i18n="turnstile_title">Smart Turnstile Access Gate</h4>
+              <p data-i18n="turnstile_desc">
+                Intelligent campus access control system powered by Raspberry Pi 4B and Arduino Mega. Integrates high-frequency RFID/NFC authentication, automated stepper motor gate control, a modern CustomTkinter Python GUI, and real-time synchronization with the university LMS for automated attendance logging.
+              </p>
+              <div class="tags">
+                <span class="tag">Raspberry Pi 4B</span>
+                <span class="tag">Arduino Mega</span>
+                <span class="tag">RFID / NFC</span>
+                <span class="tag">CustomTkinter</span>
+                <span class="tag">Python</span>
+                <span class="tag">LMS Integration</span>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <a href="pages/batu-timetable.html" class="project-card">
-          <h3>BATU Timetable</h3>
-          <p>University scheduling platform for Borg Al Arab Technological University. Complete course management and automated timetable generation system.</p>
-          <div class="tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Full-Stack</span>
-            <span class="tag">Web App</span>
+
+        <!-- Category 2: Software Engineering -->
+        <div class="project-category">
+          <div class="category-header">
+            <i class="fas fa-code category-icon" aria-hidden="true"></i>
+            <h3 class="category-title" data-i18n="cat_software_title">Software Engineering</h3>
           </div>
-        </a>
-        
-        <a href="pages/gdg-campus.html" class="project-card">
-          <h3>GDG on Campus</h3>
-          <p>Founded and organized the Google Developer Group chapter at BATU. Building a thriving tech community.</p>
-          <div class="tags">
-            <span class="tag">Leadership</span>
-            <span class="tag">Community</span>
-            <span class="tag">Google</span>
+          <div class="projects-grid">
+            <a href="pages/batu-timetable.html" class="project-card">
+              <h4 data-i18n="batu_title">BATU Timetable</h4>
+              <p data-i18n="batu_desc">
+                University scheduling and course management platform for Borg Al Arab Technological University. Features conflict detection algorithms and automated timetable generation.
+              </p>
+              <div class="tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Full-Stack</span>
+                <span class="tag">Web App</span>
+                <span class="tag">Algorithms</span>
+              </div>
+            </a>
+            
+            <a href="pages/gdg-campus.html" class="project-card">
+              <h4 data-i18n="gdg_title">GDG on Campus BATU</h4>
+              <p data-i18n="gdg_desc">
+                Technical community platform and workshop curriculum founded to empower students with cloud technologies, security fundamentals, and collaborative software development.
+              </p>
+              <div class="tags">
+                <span class="tag">Leadership</span>
+                <span class="tag">Google Cloud</span>
+                <span class="tag">Workshops</span>
+                <span class="tag">Community</span>
+              </div>
+            </a>
           </div>
-        </a>
-        
-        <a href="pages/crafted.html" class="project-card">
-          <h3>CRAFTED</h3>
-          <p>Modern furniture branding project showcasing attention to visual design and user experience.</p>
-          <div class="tags">
-            <span class="tag">Design</span>
-            <span class="tag">Branding</span>
+        </div>
+
+        <!-- Category 3: Brand and Design -->
+        <div class="project-category">
+          <div class="category-header">
+            <i class="fas fa-palette category-icon" aria-hidden="true"></i>
+            <h3 class="category-title" data-i18n="cat_design_title">Brand and Design</h3>
           </div>
-        </a>
+          <div class="projects-grid">
+            <a href="pages/crafted.html" class="project-card">
+              <h4 data-i18n="crafted_title">CRAFTED</h4>
+              <p data-i18n="crafted_desc">
+                Modern furniture branding project showcasing digital art direction, visual design systems, and responsive user experience layouts.
+              </p>
+              <div class="tags">
+                <span class="tag">Design System</span>
+                <span class="tag">Branding</span>
+                <span class="tag">UI / UX</span>
+                <span class="tag">Visual Identity</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Cybersecurity and Infrastructure Section -->
+    <section id="cybersecurity" aria-labelledby="cybersecurity-heading">
+      <h2 id="cybersecurity-heading" data-i18n="cybersecurity_title">Cybersecurity & Infrastructure</h2>
+      <p class="section-lead" data-i18n="cybersecurity_lead">
+        Specialized in defensive systems engineering, OS-level hardening, and privacy-centric architecture design.
+      </p>
+
+      <div class="cyber-grid">
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <i class="fas fa-shield-alt cyber-icon" aria-hidden="true"></i>
+            <h3 data-i18n="cyber_card1_title">OS Hardening & System Optimization</h3>
+          </div>
+          <p data-i18n="cyber_card1_desc">
+            Deep hands-on experience configuring hardened Unix and Windows environments. Proficient in Kali Linux for penetration auditing, Ubuntu Server administration, and high-performance WSL development workflows. Specialized in Windows registry optimization, attack surface minimization, and telemetry neutralization.
+          </p>
+          <div class="tags">
+            <span class="tech-tag">Kali Linux</span>
+            <span class="tech-tag">Ubuntu Server</span>
+            <span class="tech-tag">WSL 2</span>
+            <span class="tech-tag">Registry Hardening</span>
+            <span class="tech-tag">Kernel Tuning</span>
+          </div>
+        </div>
+
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <i class="fas fa-terminal cyber-icon" aria-hidden="true"></i>
+            <h3 data-i18n="cyber_card2_title">Threat Analysis & Defensive Tooling</h3>
+          </div>
+          <p data-i18n="cyber_card2_desc">
+            Network traffic inspection, vulnerability discovery, and static malware triage. Building custom Python and C++ automation utilities for packet parsing, integrity verification, and incident response mitigation.
+          </p>
+          <div class="tags">
+            <span class="tech-tag">Wireshark</span>
+            <span class="tech-tag">Nmap</span>
+            <span class="tech-tag">Ghidra</span>
+            <span class="tech-tag">Python Automation</span>
+            <span class="tech-tag">Network Auditing</span>
+          </div>
+        </div>
+
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <i class="fas fa-key cyber-icon" aria-hidden="true"></i>
+            <h3 data-i18n="cyber_card3_title">Privacy Architecture & Cryptography</h3>
+          </div>
+          <p data-i18n="cyber_card3_desc">
+            Designing zero-trust workflows, public-key infrastructure (PGP/GPG), encrypted local communication protocols for IoT devices, and virtualized isolation sandboxes for safe execution and research.
+          </p>
+          <div class="tags">
+            <span class="tech-tag">PGP / GPG</span>
+            <span class="tech-tag">Zero Trust</span>
+            <span class="tech-tag">Encrypted Auth</span>
+            <span class="tech-tag">Sandbox Isolation</span>
+            <span class="tech-tag">RFID Cryptography</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="leadership" aria-labelledby="leadership-heading">
-      <h2 id="leadership-heading">Leadership</h2>
+      <h2 id="leadership-heading" data-i18n="leadership_title">Leadership</h2>
       <a href="pages/nexus.html" class="leadership-feature">
         <div class="leadership-content">
           <div class="leadership-logo">
@@ -169,22 +278,22 @@
           </div>
           <div class="leadership-info">
             <h3>NEXUS</h3>
-            <p class="subtitle">The Convergence of Hardware & Intelligence</p>
-            <p>
+            <p class="subtitle" data-i18n="leadership_nexus_subtitle">The Convergence of Hardware & Intelligence</p>
+            <p data-i18n="leadership_nexus_desc">
               Founded and leading a specialized technical innovation team at BATU, pioneering smart campus solutions. We bridge hardware and software to create intelligent automation systems - from IoT-integrated turnstiles to LMS-synchronized attendance tracking.
             </p>
             <div class="leadership-meta">
               <div class="leadership-meta-item">
                 <i class="fas fa-user-tie" aria-hidden="true"></i>
-                <span>Founder & Team Lead</span>
+                <span data-i18n="leadership_role">Founder & Team Lead</span>
               </div>
               <div class="leadership-meta-item">
                 <i class="fas fa-users" aria-hidden="true"></i>
-                <span>5-8 Engineers</span>
+                <span data-i18n="leadership_team_size">5-8 Engineers</span>
               </div>
               <div class="leadership-meta-item">
                 <i class="fas fa-microchip" aria-hidden="true"></i>
-                <span>IoT & Automation</span>
+                <span data-i18n="leadership_domain">IoT & Automation</span>
               </div>
             </div>
           </div>
@@ -194,24 +303,25 @@
 
     <!-- About Section -->
     <section id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About Me</h2>
-      <p class="about-text">
+      <h2 id="about-heading" data-i18n="about_title">About Me</h2>
+      <p class="about-text" data-i18n="about_p1">
         I'm an Information Technology Undergraduate specializing in Cybersecurity, with a passion for building secure, user-friendly digital experiences. I develop backend systems and automation tools using Python and C++, build full-stack web applications with Laravel, and deploy IoT solutions powered by Raspberry Pi and ESP32 microcontrollers on Linux-based environments. My expertise spans system hardening, malware analysis, and embedded systems integration.
       </p>
-      <p class="about-text">
+      <p class="about-text" data-i18n="about_p2">
         When I'm not securing systems or writing code, you'll find me exploring generative AI, contributing to open-source projects, or building tech communities through my work with Google Developer Groups.
       </p>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Let's Work Together</h2>
-      <p class="contact-text">
+      <h2 id="contact-heading" data-i18n="contact_title">Let's Work Together</h2>
+      <p class="contact-text" data-i18n="contact_desc">
         I'm available for new opportunities and collaborations! Whether you have a project in mind or just want to connect - I'd love to hear from you.
       </p>
       
-      <a href="mailto:khalil.muhammad.personal@gmail.com" class="btn"><i class="fas fa-envelope" aria-hidden="true"></i> Send an Email</a>
-      <a href="pages/links.html" class="btn btn-secondary"><i class="fas fa-link" aria-hidden="true"></i> My Links</a>
+      <a href="mailto:khalil.muhammad.personal@gmail.com" class="btn"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="btn_send_email">Send an Email</span></a>
+      <a href="pages/links.html" class="btn btn-secondary"><i class="fas fa-link" aria-hidden="true"></i> <span data-i18n="btn_my_links">My Links</span></a>
+      <a href="pgp.txt" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fas fa-key" aria-hidden="true"></i> <span data-i18n="btn_pgp_key">Public PGP Key</span></a>
       
       <div class="social-links">
         <a href="https://github.com/KHALILL2" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
@@ -227,7 +337,7 @@
 
   <!-- Site Footer -->
   <footer role="contentinfo">
-    <p>&copy; 2026 Khalil Muhammad. All rights reserved.</p>
+    <p data-i18n="footer_rights">&copy; 2026 Khalil Muhammad. All rights reserved.</p>
   </footer>
 
   <!-- JavaScript -->

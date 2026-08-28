@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; connect-src 'self' https://khalill2.github.io;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRAFTED - Khalil</title>
     
@@ -12,10 +12,10 @@
     <meta property="og:description" content="Comprehensive branding project showcasing visual design and user experience by Khalil Muhammad.">
     <meta property="og:image" content="https://khalill2.github.io/Personal-Website/assets/images/Crafted-logo.jpg">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -32,22 +32,25 @@
     <nav class="navbar">
         <div class="navbar-content">
             <a href="../index.html" class="logo">khalil</a>
-            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_projects">Back to Projects</span></a>
+            <div class="nav-controls">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">AR</button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav-links">
-            <li><a href="../index.html#work" class="mobile-nav-link"><i class="fas fa-arrow-left"></i> Back to Projects</a></li>
+            <li><a href="../index.html#work" class="mobile-nav-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_projects">Back to Projects</span></a></li>
         </ul>
     </div>
 

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; connect-src 'self' https://khalill2.github.io;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links - Khalil Muhammad</title>
     
@@ -12,10 +12,10 @@
     <meta property="og:description" content="All links to connect with Khalil Muhammad.">
     <meta property="og:image" content="https://khalill2.github.io/Personal-Website/assets/images/KH-no-wm.png">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -175,22 +175,25 @@
     <nav class="navbar">
         <div class="navbar-content">
             <a href="../index.html" class="logo">khalil</a>
-            <a href="../index.html#contact" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+            <a href="../index.html#contact" class="back-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_projects">Back to Portfolio</span></a>
+            <div class="nav-controls">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">AR</button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </div>
     </nav>
     
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav-links">
-            <li><a href="../index.html#contact" class="mobile-nav-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></li>
+            <li><a href="../index.html#contact" class="mobile-nav-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_projects">Back to Portfolio</span></a></li>
         </ul>
     </div>
     
@@ -199,54 +202,54 @@
         <div class="links-avatar">
             <img src="../assets/images/KH-no-wm.png" alt="Khalil Muhammad">
         </div>
-        <h1 class="links-name">Khalil Muhammad</h1>
-        <p class="links-tagline">IT Undergraduate &amp; Cybersecurity Specialist</p>
+        <h1 class="links-name" data-i18n="links_page_title">Khalil Muhammad</h1>
+        <p class="links-tagline" data-i18n="links_page_tagline">IT Undergraduate &amp; Cybersecurity Specialist</p>
         
         <div class="links-list">
             <a href="../index.html" class="link-item">
                 <i class="fas fa-briefcase"></i>
-                <span>Portfolio</span>
+                <span data-i18n="link_portfolio">Portfolio</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
             <a href="https://github.com/KHALILL2" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fab fa-github"></i>
-                <span>GitHub</span>
+                <span data-i18n="link_github">GitHub</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
             <a href="https://www.linkedin.com/in/khalil-muhammad-ti" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fab fa-linkedin-in"></i>
-                <span>LinkedIn</span>
+                <span data-i18n="link_linkedin">LinkedIn</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
             <a href="https://www.facebook.com/share/14V49oHYk59/" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fab fa-facebook-f"></i>
-                <span>Facebook</span>
+                <span data-i18n="link_facebook">Facebook</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
             <a href="https://instagram.com/khalil_muhammad_154" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
+                <span data-i18n="link_instagram">Instagram</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
             <a href="https://t.me/khalil_muhammad_154" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fab fa-telegram"></i>
-                <span>Telegram</span>
+                <span data-i18n="link_telegram">Telegram</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
             <a href="https://api.whatsapp.com/send?phone=201015163499" target="_blank" rel="noopener noreferrer" class="link-item">
                 <i class="fab fa-whatsapp"></i>
-                <span>WhatsApp</span>
+                <span data-i18n="link_whatsapp">WhatsApp</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
             <a href="mailto:khalil.muhammad.personal@gmail.com" class="link-item">
                 <i class="fas fa-envelope"></i>
-                <span>Email Me</span>
+                <span data-i18n="link_email">Email Me</span>
                 <i class="fas fa-chevron-right link-arrow"></i>
             </a>
         </div>
         
         <div class="links-footer">
-            <a href="../index.html">&copy; 2026 Khalil Muhammad</a>
+            <a href="../index.html" data-i18n="footer_rights">&copy; 2026 Khalil Muhammad</a>
         </div>
     </div>
     
