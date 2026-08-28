@@ -28,7 +28,7 @@
   --bg-elevated: #0d1524;
   --bg-card: rgba(13, 21, 36, 0.7);
   --bg-tag: #131f33;
-  --bg-nav: rgba(7, 11, 18, 0.88);
+  --bg-nav: rgba(7, 11, 18, 0.75);
 
   --text-heading: #f0f6fc;
   --text-body: #cbd5e1;
@@ -144,15 +144,24 @@ p {
   width: 100%;
   z-index: 1000;
   
-  /* Solid elevated background (backdrop-filter removed for GPU performance) */
-  background: rgba(10, 10, 10, 0.96);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  padding: 1.5rem 2rem;
+  transform: translateZ(0);
+  will-change: transform, backdrop-filter;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+/* Scrolled Navbar with Hardware-Accelerated Liquid Glass */
+.navbar.scrolled {
+  background: var(--bg-nav);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
-  /* Spacing */
-  padding: 1.5rem 2rem;
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  padding: 1rem 2rem;
 }
 
 .navbar-content {
@@ -263,12 +272,12 @@ section {
     justify-content: center;
     min-height: 48px;
     padding: 0.875rem 1.75rem;
-    /* Solid metallic shine (backdrop-filter removed for GPU performance) */
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(220, 220, 220, 0.95));
-    color: #000000;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(220, 225, 235, 0.85) 100%);
+    color: #070b12;
     text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 12px;
-    font-weight: 500;
+    font-weight: 600;
     margin-right: 1rem;
     margin-bottom: 1rem;
     will-change: transform;
@@ -277,11 +286,19 @@ section {
                 background 0.3s ease, 
                 border-color 0.3s ease;
     box-shadow: 
-      0 8px 32px rgba(255, 255, 255, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      0 8px 24px rgba(0, 0, 0, 0.25),
+      inset 0 1px 1px rgba(255, 255, 255, 0.9);
     position: relative;
     overflow: hidden;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, rgba(19, 31, 51, 0.7) 0%, rgba(10, 16, 26, 0.6) 100%);
+    border: 1px solid var(--border-default);
+    color: var(--text-heading);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.25),
+      inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .btn::before {
@@ -329,17 +346,17 @@ section {
   }
 
   .btn-secondary:hover {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-      border-color: rgba(255, 255, 255, 0.5);
+      background: linear-gradient(135deg, rgba(28, 45, 74, 0.85), rgba(15, 24, 40, 0.75));
+      border-color: var(--accent-cyan);
       color: #ffffff;
       transform: translateY(-4px) scale(1.02);
   }
 
   .btn-secondary:hover::after {
       box-shadow:
-        0 16px 48px rgba(255, 255, 255, 0.2),
-        0 0 40px rgba(255, 255, 255, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 16px 48px rgba(0, 242, 254, 0.2),
+        0 0 30px rgba(0, 242, 254, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
       opacity: 1;
   }
 }
@@ -392,10 +409,10 @@ section {
   gap: clamp(1.25rem, 2.5vw, 2.5rem);
 }
 
-/* Project card as anchor element (backdrop-filter removed for GPU performance) */
+/* Project card as anchor element with Faux Liquid Glass */
 .project-card {
-  background: linear-gradient(135deg, rgba(30, 30, 30, 0.92), rgba(15, 15, 15, 0.88));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(19, 31, 51, 0.65) 0%, rgba(10, 16, 26, 0.55) 100%);
+  border: 1px solid var(--border-default);
   border-radius: 16px;
   padding: 2rem;
   will-change: transform;
@@ -410,12 +427,15 @@ section {
   overflow: hidden;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .project-card.featured-project {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: linear-gradient(135deg, rgba(35, 38, 48, 0.6), rgba(20, 22, 30, 0.5));
+  border-color: var(--border-strong);
+  background: linear-gradient(135deg, rgba(24, 38, 64, 0.75) 0%, rgba(13, 21, 36, 0.65) 100%);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
 .card-badge {
@@ -454,12 +474,12 @@ section {
 
   .project-card:hover {
     transform: translateY(-8px) scale(1.01);
-    background: linear-gradient(135deg, rgba(40, 40, 40, 0.95), rgba(25, 25, 25, 0.92));
-    border-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(28, 45, 74, 0.8) 0%, rgba(15, 24, 40, 0.7) 100%);
+    border-color: var(--accent-cyan);
     box-shadow: 
-      0 20px 60px rgba(255, 255, 255, 0.15),
-      0 0 40px rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      0 20px 60px rgba(0, 242, 254, 0.12),
+      0 0 30px rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -540,10 +560,10 @@ section {
   margin-top: 2rem;
 }
 
-/* backdrop-filter removed for GPU performance */
+/* Cyber card with Faux Liquid Glass */
 .cyber-card {
-  background: linear-gradient(135deg, rgba(25, 30, 40, 0.92), rgba(15, 20, 25, 0.88));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(19, 31, 51, 0.65) 0%, rgba(10, 16, 26, 0.55) 100%);
+  border: 1px solid var(--border-default);
   border-radius: 16px;
   padding: 2.25rem 2rem;
   will-change: transform;
@@ -553,7 +573,7 @@ section {
               border-color 0.4s ease;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -589,9 +609,12 @@ section {
 @media (hover: hover) and (pointer: fine) {
   .cyber-card:hover {
     transform: translateY(-8px) scale(1.01);
-    background: linear-gradient(135deg, rgba(35, 42, 55, 0.6), rgba(20, 26, 35, 0.5));
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.12);
+    background: linear-gradient(135deg, rgba(28, 45, 74, 0.8) 0%, rgba(15, 24, 40, 0.7) 100%);
+    border-color: var(--accent-cyan);
+    box-shadow: 
+      0 20px 60px rgba(0, 242, 254, 0.12),
+      0 0 30px rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -599,10 +622,10 @@ section {
    6. LEADERSHIP SECTION
    ============================================ */
 
-/* backdrop-filter removed for GPU performance */
+/* Leadership feature with Faux Liquid Glass */
 .leadership-feature {
-  background: linear-gradient(135deg, rgba(25, 25, 25, 0.94), rgba(15, 15, 15, 0.90));
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(19, 31, 51, 0.7) 0%, rgba(10, 16, 26, 0.6) 100%);
+  border: 1px solid var(--border-default);
   border-radius: 20px;
   padding: 3rem;
   margin-top: 3rem;
@@ -616,8 +639,8 @@ section {
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 12px 48px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 12px 48px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
 }
 
 .leadership-feature::after {
@@ -640,12 +663,12 @@ section {
 
   .leadership-feature:hover {
     transform: translateY(-8px) scale(1.01);
-    background: linear-gradient(135deg, rgba(35, 35, 35, 0.96), rgba(25, 25, 25, 0.93));
-    border-color: rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, rgba(28, 45, 74, 0.85) 0%, rgba(15, 24, 40, 0.75) 100%);
+    border-color: var(--accent-cyan);
     box-shadow: 
-      0 24px 72px rgba(255, 255, 255, 0.18),
-      0 0 60px rgba(255, 255, 255, 0.12),
-      inset 0 2px 0 rgba(255, 255, 255, 0.25);
+      0 24px 72px rgba(0, 242, 254, 0.15),
+      0 0 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25);
   }
 }
 
@@ -1859,7 +1882,7 @@ footer {
   transform: rotate(180deg);
 }
 
-/* Dropdown Menu Container */
+/* Dropdown Menu Container with Hardware-Accelerated Glass */
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -1867,14 +1890,18 @@ footer {
   z-index: 1100;
   min-width: 145px;
   padding: 0.35rem;
-  background: var(--bg-elevated);
-  /* backdrop-filter removed for GPU performance */
+  background: var(--bg-nav);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid var(--border-default);
   border-radius: 10px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transform: translateZ(0) translateY(-6px);
+  will-change: transform, backdrop-filter;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-6px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   display: flex;
   flex-direction: column;
@@ -1884,7 +1911,7 @@ footer {
 .dropdown-menu.active {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateZ(0) translateY(0);
 }
 
 /* Dropdown Option Items (44px Minimum Touch Target) */
@@ -2026,7 +2053,7 @@ body::after {
   --bg-elevated: #ffffff;
   --bg-card: rgba(255, 255, 255, 0.95);
   --bg-tag: #edf2f7;
-  --bg-nav: rgba(248, 250, 252, 0.88);
+  --bg-nav: rgba(248, 250, 252, 0.82);
 
   --text-heading: #0f172a;
   --text-body: #334155;
