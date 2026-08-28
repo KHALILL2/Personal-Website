@@ -139,6 +139,48 @@
       <li><a href="#about" class="mobile-nav-link" data-i18n="nav_about">About</a></li>
       <li><a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">Contact</a></li>
     </ul>
+
+    <!-- Mobile Drawer Controls -->
+    <div class="mobile-menu-controls">
+      <!-- Mobile Language Dropdown -->
+      <div class="dropdown" id="mobileLangDropdown">
+        <button class="dropdown-toggle lang-toggle" id="mobileLangToggle" aria-label="Language selection" aria-haspopup="true" aria-expanded="false" type="button">
+          <i class="fas fa-globe" aria-hidden="true"></i>
+          <span class="currentLangLabel">EN</span>
+          <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown-menu" id="mobileLangMenu" role="menu" aria-labelledby="mobileLangToggle">
+          <button class="dropdown-item" data-lang="en" role="menuitem" type="button">
+            <span class="item-text">English</span>
+          </button>
+          <button class="dropdown-item" data-lang="ar" role="menuitem" type="button">
+            <span class="item-text">العربية</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Theme Dropdown -->
+      <div class="dropdown" id="mobileThemeDropdown">
+        <button class="dropdown-toggle theme-toggle" id="mobileThemeToggle" aria-label="Theme selection" aria-haspopup="true" aria-expanded="false" type="button">
+          <i class="fas fa-moon currentThemeIcon" aria-hidden="true"></i>
+          <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown-menu" id="mobileThemeMenu" role="menu" aria-labelledby="mobileThemeToggle">
+          <button class="dropdown-item" data-theme-val="dark" role="menuitem" type="button">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+            <span class="item-text" data-i18n="theme_dark">Dark</span>
+          </button>
+          <button class="dropdown-item" data-theme-val="light" role="menuitem" type="button">
+            <i class="fas fa-sun" aria-hidden="true"></i>
+            <span class="item-text" data-i18n="theme_light">Light</span>
+          </button>
+          <button class="dropdown-item" data-theme-val="system" role="menuitem" type="button">
+            <i class="fas fa-desktop" aria-hidden="true"></i>
+            <span class="item-text" data-i18n="theme_system">System</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Main Content -->

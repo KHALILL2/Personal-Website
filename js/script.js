@@ -404,18 +404,18 @@ function applyTheme(mode) {
 }
 
 function updateThemeDropdownUI(mode, effectiveTheme) {
-  const currentThemeIcon = document.getElementById('currentThemeIcon');
-  if (currentThemeIcon) {
+  const currentThemeIcons = document.querySelectorAll('#currentThemeIcon, .currentThemeIcon');
+  currentThemeIcons.forEach(icon => {
     if (mode === 'system') {
-      currentThemeIcon.className = 'fas fa-desktop';
+      icon.className = 'fas fa-desktop currentThemeIcon';
     } else if (effectiveTheme === 'light') {
-      currentThemeIcon.className = 'fas fa-sun';
+      icon.className = 'fas fa-sun currentThemeIcon';
     } else {
-      currentThemeIcon.className = 'fas fa-moon';
+      icon.className = 'fas fa-moon currentThemeIcon';
     }
-  }
+  });
 
-  document.querySelectorAll('#themeMenu .dropdown-item').forEach(item => {
+  document.querySelectorAll('.dropdown-item[data-theme-val]').forEach(item => {
     const val = item.getAttribute('data-theme-val');
     if (val === mode) {
       item.classList.add('selected');
@@ -449,12 +449,12 @@ function applyLanguage(lang) {
   document.documentElement.setAttribute('lang', targetLang);
   document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
 
-  const currentLangLabel = document.getElementById('currentLangLabel');
-  if (currentLangLabel) {
-    currentLangLabel.textContent = targetLang.toUpperCase();
-  }
+  const currentLangLabels = document.querySelectorAll('#currentLangLabel, .currentLangLabel');
+  currentLangLabels.forEach(label => {
+    label.textContent = targetLang.toUpperCase();
+  });
 
-  document.querySelectorAll('#langMenu .dropdown-item').forEach(item => {
+  document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
     const val = item.getAttribute('data-lang');
     if (val === targetLang) {
       item.classList.add('selected');
@@ -526,7 +526,7 @@ function initDropdowns() {
   });
 
   // Direct Language Selection Items
-  document.querySelectorAll('#langMenu .dropdown-item').forEach(btn => {
+  document.querySelectorAll('.dropdown-item[data-lang]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const selectedLang = btn.getAttribute('data-lang');
@@ -539,7 +539,7 @@ function initDropdowns() {
   });
 
   // Direct Theme Selection Items
-  document.querySelectorAll('#themeMenu .dropdown-item').forEach(btn => {
+  document.querySelectorAll('.dropdown-item[data-theme-val]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const selectedTheme = btn.getAttribute('data-theme-val');
