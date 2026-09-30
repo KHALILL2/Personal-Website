@@ -32,8 +32,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   
-  <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Inter, JetBrains Mono, Cairo & IBM Plex Sans Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome: Non-blocking load with print/onload trick -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -75,10 +75,11 @@
     <div class="navbar-content">
       <a href="index.html" class="logo" aria-label="Khalil - Home">khalil</a>
       <ul class="nav-links">
-        <li><a href="#work" data-i18n="nav_work">Work</a></li>
-        <li><a href="#cybersecurity" data-i18n="nav_cybersecurity">Security</a></li>
-        <li><a href="#leadership" data-i18n="nav_leadership">Leadership</a></li>
         <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
+        <li><a href="#work" data-i18n="nav_work">Work</a></li>
+        <li><a href="#certifications" data-i18n="nav_certifications">Certifications</a></li>
+        <li><a href="#leadership" data-i18n="nav_leadership">Leadership</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
       <div class="nav-controls">
@@ -133,10 +134,11 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
-      <li><a href="#work" class="mobile-nav-link" data-i18n="nav_work">Work</a></li>
-      <li><a href="#cybersecurity" class="mobile-nav-link" data-i18n="nav_cybersecurity">Security</a></li>
-      <li><a href="#leadership" class="mobile-nav-link" data-i18n="nav_leadership">Leadership</a></li>
       <li><a href="#about" class="mobile-nav-link" data-i18n="nav_about">About</a></li>
+      <li><a href="#experience" class="mobile-nav-link" data-i18n="nav_experience">Experience</a></li>
+      <li><a href="#work" class="mobile-nav-link" data-i18n="nav_work">Work</a></li>
+      <li><a href="#certifications" class="mobile-nav-link" data-i18n="nav_certifications">Certifications</a></li>
+      <li><a href="#leadership" class="mobile-nav-link" data-i18n="nav_leadership">Leadership</a></li>
       <li><a href="#contact" class="mobile-nav-link" data-i18n="nav_contact">Contact</a></li>
     </ul>
 
@@ -190,11 +192,53 @@
     <header class="hero">
       <div>
         <h1 data-i18n="hero_title">Building secure systems<br>and elegant interfaces</h1>
-        <p data-i18n="hero_subtitle">Information Technology Undergraduate & Cybersecurity Specialist focused on system hardening, malware analysis, and full-stack development. Based in Alexandria, Egypt.</p>
-        <a href="#work" class="btn" data-i18n="btn_view_work">View Work</a>
+        <p data-i18n="hero_subtitle">IT Specialist &amp; Systems Engineer bridging embedded systems, enterprise IT operations, and full-stack software development.</p>
+        <a href="#work" class="btn" data-i18n="btn_view_work">Explore Solutions</a>
         <a href="#contact" class="btn btn-secondary" data-i18n="btn_get_in_touch">Get in Touch</a>
       </div>
     </header>
+
+    <!-- About Section -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading" data-i18n="about_title">About Me</h2>
+      <p class="about-text" data-i18n="about_p1">
+        I am an IT Specialist and Systems Engineer with a proven track record of bridging embedded systems, enterprise IT operations, and full-stack software development. With hands-on experience managing university data centers, leading IT operations, and engineering integrated IoT access control systems, I specialize in translating complex operational requirements into highly reliable, secure, and scalable architectures.
+      </p>
+    </section>
+
+    <!-- Experience & IT Operations Section -->
+    <section id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" data-i18n="experience_title">Experience & IT Operations</h2>
+      <div class="cyber-grid">
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <i class="fas fa-university cyber-icon" aria-hidden="true"></i>
+            <h3 data-i18n="exp_batu_role">IT Specialist</h3>
+          </div>
+          <p data-i18n="exp_batu_desc">
+            Providing comprehensive campus-wide technical support and data center maintenance. Responsible for server health monitoring, operating system and software deployment, and ensuring uninterrupted IT services for faculty and students.
+          </p>
+          <div class="tags">
+            <span class="tech-tag">BATU</span>
+            <span class="tech-tag">Sep 2024 - Present</span>
+          </div>
+        </div>
+
+        <div class="cyber-card">
+          <div class="cyber-card-header">
+            <i class="fas fa-server cyber-icon" aria-hidden="true"></i>
+            <h3 data-i18n="exp_ctu_role">IT Operations Lead</h3>
+          </div>
+          <p data-i18n="exp_ctu_desc">
+            Directed hardware assembly and supervised lab proctors. Established rigorous hardware audit procedures and effectively minimized instructional downtime by maintaining optimal lab environments.
+          </p>
+          <div class="tags">
+            <span class="tech-tag">CTU</span>
+            <span class="tech-tag">July 2026 - Sep 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Projects Section with 3 Distinct Categories -->
     <section id="work" aria-labelledby="work-heading">
@@ -208,7 +252,7 @@
             <h3 class="category-title" data-i18n="cat_hardware_title">Hardware and IoT</h3>
           </div>
           <div class="projects-grid">
-            <div class="project-card featured-project">
+            <a href="pages/nexus.html" class="project-card featured-project">
               <div class="card-badge" data-i18n="badge_featured">Featured Project</div>
               <h4 data-i18n="turnstile_title">Smart Turnstile Access Gate</h4>
               <p data-i18n="turnstile_desc">
@@ -222,7 +266,7 @@
                 <span class="tag">Python</span>
                 <span class="tag">LMS Integration</span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -249,7 +293,7 @@
             <a href="pages/gdg-campus.html" class="project-card">
               <h4 data-i18n="gdg_title">GDG on Campus BATU</h4>
               <p data-i18n="gdg_desc">
-                Technical community platform and workshop curriculum founded to empower students with cloud technologies, security fundamentals, and collaborative software development.
+                Technical community platform and workshop curriculum founded to equip students with cloud technologies, security fundamentals, and collaborative software development.
               </p>
               <div class="tags">
                 <span class="tag">Leadership</span>
@@ -261,23 +305,42 @@
           </div>
         </div>
 
-        <!-- Category 3: Brand and Design -->
+        <!-- Category 3: Cloud and Automation -->
         <div class="project-category">
           <div class="category-header">
-            <i class="fas fa-palette category-icon" aria-hidden="true"></i>
-            <h3 class="category-title" data-i18n="cat_design_title">Brand and Design</h3>
+            <i class="fas fa-cloud category-icon" aria-hidden="true"></i>
+            <h3 class="category-title" data-i18n="cat_cloud_title">Cloud and Automation</h3>
+          </div>
+          <div class="projects-grid">
+            <a href="#" class="project-card">
+              <h4 data-i18n="aws_ml_title">AWS Machine Learning Capstone</h4>
+              <p data-i18n="aws_ml_desc">
+                Architected and deployed a scalable predictive modeling pipeline utilizing AWS cloud infrastructure. Engineered machine learning algorithms in Python to process large datasets, focusing on high availability, cost-efficiency, and seamless cloud deployment.
+              </p>
+              <div class="tags">
+                <span class="tag">AWS</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Python</span>
+                <span class="tag">Cloud Architecture</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 4: Creative Ventures -->
+        <div class="project-category creative-ventures">
+          <div class="category-header">
+            <h3 class="category-title" data-i18n="cat_creative_title">Creative Ventures</h3>
           </div>
           <div class="projects-grid">
             <a href="pages/crafted.html" class="project-card">
               <h4 data-i18n="crafted_title">CRAFTED</h4>
               <p data-i18n="crafted_desc">
-                Modern furniture branding project showcasing digital art direction, visual design systems, and responsive user experience layouts.
+                Modern furniture branding project exploring digital art direction and visual design systems.
               </p>
               <div class="tags">
-                <span class="tag">Design System</span>
-                <span class="tag">Branding</span>
                 <span class="tag">UI / UX</span>
-                <span class="tag">Visual Identity</span>
+                <span class="tag">Design System</span>
               </div>
             </a>
           </div>
@@ -286,64 +349,53 @@
       </div>
     </section>
 
-    <!-- Cybersecurity and Infrastructure Section -->
-    <section id="cybersecurity" aria-labelledby="cybersecurity-heading">
-      <h2 id="cybersecurity-heading" data-i18n="cybersecurity_title">Cybersecurity & Infrastructure</h2>
-      <p class="section-lead" data-i18n="cybersecurity_lead">
-        Specialized in defensive systems engineering, OS-level hardening, and privacy-centric architecture design.
-      </p>
-
-      <div class="cyber-grid">
-        <div class="cyber-card">
-          <div class="cyber-card-header">
-            <i class="fas fa-shield-alt cyber-icon" aria-hidden="true"></i>
-            <h3 data-i18n="cyber_card1_title">OS Hardening & System Optimization</h3>
-          </div>
-          <p data-i18n="cyber_card1_desc">
-            Deep hands-on experience configuring hardened Unix and Windows environments. Proficient in Kali Linux for penetration auditing, Ubuntu Server administration, and high-performance WSL development workflows. Specialized in Windows registry optimization, attack surface minimization, and telemetry neutralization.
+    <!-- Certifications Section -->
+    <section id="certifications" aria-labelledby="certifications-heading">
+      <h2 id="certifications-heading" data-i18n="certifications_title">Certifications & Training</h2>
+      
+      <div class="projects-grid">
+        <a href="#" class="project-card">
+          <h4>
+            <img src="assets/images/nvidia-logo.png" alt="NVIDIA Logo" class="cert-logo"> 
+            <span data-i18n="cert_nvidia_title">NVIDIA DLI</span>
+          </h4>
+          <p data-i18n="cert_nvidia_desc">
+            AI for All: GenAI Practice (Sep 2025)<br>Building LLM Applications With Prompt Engineering (Oct 2025)<br>Building RAG Agents with LLMs (Aug 2026)<br>Getting Started with AI on Jetson Nano (Oct 2025)
           </p>
           <div class="tags">
-            <span class="tech-tag">Kali Linux</span>
-            <span class="tech-tag">Ubuntu Server</span>
-            <span class="tech-tag">WSL 2</span>
-            <span class="tech-tag">Registry Hardening</span>
-            <span class="tech-tag">Kernel Tuning</span>
+            <span class="tag">Generative AI</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Jetson Nano</span>
           </div>
-        </div>
+        </a>
 
-        <div class="cyber-card">
-          <div class="cyber-card-header">
-            <i class="fas fa-terminal cyber-icon" aria-hidden="true"></i>
-            <h3 data-i18n="cyber_card2_title">Threat Analysis & Defensive Tooling</h3>
-          </div>
-          <p data-i18n="cyber_card2_desc">
-            Network traffic inspection, vulnerability discovery, and static malware triage. Building custom Python and C++ automation utilities for packet parsing, integrity verification, and incident response mitigation.
+        <a href="#" class="project-card">
+          <h4>
+            <img src="assets/images/iti-logo.png" alt="ITI Logo" class="cert-logo"> 
+            <span data-i18n="cert_iti_title">ITI</span>
+          </h4>
+          <p data-i18n="cert_iti_desc">
+            NVIDIA DLI Program: Generative AI (Oct 2025)<br>Introduction to Deep Learning (Feb 2026)
           </p>
           <div class="tags">
-            <span class="tech-tag">Wireshark</span>
-            <span class="tech-tag">Nmap</span>
-            <span class="tech-tag">Ghidra</span>
-            <span class="tech-tag">Python Automation</span>
-            <span class="tech-tag">Network Auditing</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Generative AI</span>
           </div>
-        </div>
+        </a>
 
-        <div class="cyber-card">
-          <div class="cyber-card-header">
-            <i class="fas fa-key cyber-icon" aria-hidden="true"></i>
-            <h3 data-i18n="cyber_card3_title">Privacy Architecture & Cryptography</h3>
-          </div>
-          <p data-i18n="cyber_card3_desc">
-            Designing zero-trust workflows, public-key infrastructure (PGP/GPG), encrypted local communication protocols for IoT devices, and virtualized isolation sandboxes for safe execution and research.
+        <a href="#" class="project-card">
+          <h4>
+            <img src="assets/images/itida-logo.png" alt="ITIDA Logo" class="cert-logo"> 
+            <span data-i18n="cert_itida_title">ITIDA</span>
+          </h4>
+          <p data-i18n="cert_itida_desc">
+            ITIDA GIGS freelancing program (Apr 2026)
           </p>
           <div class="tags">
-            <span class="tech-tag">PGP / GPG</span>
-            <span class="tech-tag">Zero Trust</span>
-            <span class="tech-tag">Encrypted Auth</span>
-            <span class="tech-tag">Sandbox Isolation</span>
-            <span class="tech-tag">RFID Cryptography</span>
+            <span class="tag">Freelancing</span>
+            <span class="tag">GIGS</span>
           </div>
-        </div>
+        </a>
       </div>
     </section>
 
@@ -379,17 +431,6 @@
       </a>
     </section>
 
-    <!-- About Section -->
-    <section id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading" data-i18n="about_title">About Me</h2>
-      <p class="about-text" data-i18n="about_p1">
-        I'm an Information Technology Undergraduate specializing in Cybersecurity, with a passion for building secure, user-friendly digital experiences. I develop backend systems and automation tools using Python and C++, build full-stack web applications with Laravel, and deploy IoT solutions powered by Raspberry Pi and ESP32 microcontrollers on Linux-based environments. My expertise spans system hardening, malware analysis, and embedded systems integration.
-      </p>
-      <p class="about-text" data-i18n="about_p2">
-        When I'm not securing systems or writing code, you'll find me exploring generative AI, contributing to open-source projects, or building tech communities through my work with Google Developer Groups.
-      </p>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" aria-labelledby="contact-heading">
       <h2 id="contact-heading" data-i18n="contact_title">Let's Work Together</h2>
@@ -397,7 +438,7 @@
         I'm available for new opportunities and collaborations! Whether you have a project in mind or just want to connect - I'd love to hear from you.
       </p>
       
-      <a href="mailto:khalil.muhammad.personal@gmail.com" class="btn"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="btn_send_email">Send an Email</span></a>
+      <a href="mailto:khalil.business.50@gmail.com" class="btn"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="btn_send_email">Request a Consultation</span></a>
       <a href="pages/links.html" class="btn btn-secondary"><i class="fas fa-link" aria-hidden="true"></i> <span data-i18n="btn_my_links">My Links</span></a>
       <a href="pgp.txt" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"><i class="fas fa-key" aria-hidden="true"></i> <span data-i18n="btn_pgp_key">Public PGP Key</span></a>
       
@@ -419,7 +460,7 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=2.0"></script>
 
 </body>
 </html>

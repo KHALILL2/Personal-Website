@@ -262,19 +262,23 @@ const systemDarkMedia = window.matchMedia('(prefers-color-scheme: dark)');
 // Translation Dictionary
 const i18nDictionary = {
   en: {
+    nav_experience: "Experience",
     nav_work: "Work",
-    nav_cybersecurity: "Security",
+    nav_certifications: "Certifications",
     nav_leadership: "Leadership",
     nav_about: "About",
     nav_contact: "Contact",
     hero_title: "Building secure systems<br>and elegant interfaces",
-    hero_subtitle: "Information Technology Undergraduate & Cybersecurity Specialist focused on system hardening, malware analysis, and full-stack development. Based in Alexandria, Egypt.",
-    btn_view_work: "View Work",
+    hero_subtitle: "IT Specialist & Systems Engineer bridging embedded systems, enterprise IT operations, and full-stack software development.",
+    btn_view_work: "Explore Solutions",
     btn_get_in_touch: "Get in Touch",
     projects_title: "Featured Work",
     cat_hardware_title: "Hardware and IoT",
     cat_software_title: "Software Engineering",
-    cat_design_title: "Brand and Design",
+    cat_cloud_title: "Cloud and Automation",
+    aws_ml_title: "AWS Machine Learning Capstone",
+    aws_ml_desc: "Architected and deployed a scalable predictive modeling pipeline utilizing AWS cloud infrastructure. Engineered machine learning algorithms in Python to process large datasets, focusing on high availability, cost-efficiency, and seamless cloud deployment.",
+    cat_creative_title: "Creative Ventures",
     badge_featured: "Featured Project",
     turnstile_title: "Smart Turnstile Access Gate",
     turnstile_desc: "Intelligent campus access control system powered by Raspberry Pi 4B and Arduino Mega. Integrates high-frequency RFID/NFC authentication, automated stepper motor gate control, a modern CustomTkinter Python GUI, and real-time synchronization with the university LMS for automated attendance logging.",
@@ -283,7 +287,7 @@ const i18nDictionary = {
     gdg_title: "GDG on Campus BATU",
     gdg_desc: "Technical community platform and workshop curriculum founded to empower students with cloud technologies, security fundamentals, and collaborative software development.",
     crafted_title: "CRAFTED",
-    crafted_desc: "Modern furniture branding project showcasing digital art direction, visual design systems, and responsive user experience layouts.",
+    crafted_desc: "Modern furniture branding project exploring digital art direction and visual design systems.",
     cybersecurity_title: "Cybersecurity & Infrastructure",
     cybersecurity_lead: "Specialized in defensive systems engineering, OS-level hardening, and privacy-centric architecture design.",
     cyber_card1_title: "OS Hardening & System Optimization",
@@ -299,11 +303,22 @@ const i18nDictionary = {
     leadership_team_size: "5-8 Engineers",
     leadership_domain: "IoT & Automation",
     about_title: "About Me",
-    about_p1: "I'm an Information Technology Undergraduate specializing in Cybersecurity, with a passion for building secure, user-friendly digital experiences. I develop backend systems and automation tools using Python and C++, build full-stack web applications with Laravel, and deploy IoT solutions powered by Raspberry Pi and ESP32 microcontrollers on Linux-based environments. My expertise spans system hardening, malware analysis, and embedded systems integration.",
-    about_p2: "When I'm not securing systems or writing code, you'll find me exploring generative AI, contributing to open-source projects, or building tech communities through my work with Google Developer Groups.",
+    about_p1: "I am an IT Specialist and Systems Engineer with a proven track record of bridging embedded systems, enterprise IT operations, and full-stack software development. With hands-on experience managing university data centers, leading IT operations, and engineering integrated IoT access control systems, I specialize in translating complex operational requirements into highly reliable, secure, and scalable architectures.",
+    experience_title: "Experience & IT Operations",
+    exp_batu_role: "IT Specialist",
+    exp_batu_desc: "Providing comprehensive campus-wide technical support and data center maintenance. Responsible for server health monitoring, operating system and software deployment, and ensuring uninterrupted IT services for faculty and students.",
+    exp_ctu_role: "IT Operations Lead",
+    exp_ctu_desc: "Directed hardware assembly and supervised lab proctors. Established rigorous hardware audit procedures and effectively minimized instructional downtime by maintaining optimal lab environments.",
+    certifications_title: "Certifications & Training",
+    cert_nvidia_title: "NVIDIA DLI",
+    cert_nvidia_desc: "AI for All: GenAI Practice (Sep 2025)<br>Building LLM Applications With Prompt Engineering (Oct 2025)<br>Building RAG Agents with LLMs (Aug 2026)<br>Getting Started with AI on Jetson Nano (Oct 2025)",
+    cert_iti_title: "ITI",
+    cert_iti_desc: "NVIDIA DLI Program: Generative AI (Oct 2025)<br>Introduction to Deep Learning (Feb 2026)",
+    cert_itida_title: "ITIDA",
+    cert_itida_desc: "ITIDA GIGS freelancing program (Apr 2026)",
     contact_title: "Let's Work Together",
     contact_desc: "I'm available for new opportunities and collaborations! Whether you have a project in mind or just want to connect - I'd love to hear from you.",
-    btn_send_email: "Send an Email",
+    btn_send_email: "Request a Consultation",
     btn_my_links: "My Links",
     btn_pgp_key: "Public PGP Key",
     theme_dark: "Dark",
@@ -323,19 +338,23 @@ const i18nDictionary = {
     link_email: "Email Me"
   },
   ar: {
+    nav_experience: "الخبرات",
     nav_work: "المشاريع",
-    nav_cybersecurity: "الأمن السيبراني",
+    nav_certifications: "الشهادات",
     nav_leadership: "القيادة",
     nav_about: "نبذة عني",
     nav_contact: "تواصل معي",
     hero_title: "بناء أنظمة آمنة<br>وواجهات رقمية متقدمة",
-    hero_subtitle: "طالب تكنولوجيا المعلومات ومتخصص في الأمن السيبراني، أركز على تأمين الأنظمة، تحليل البرمجيات الخبيثة، وتطوير الويب المتكامل. مقيم في الإسكندرية، مصر.",
-    btn_view_work: "تصفح المشاريع",
+    hero_subtitle: "أخصائي تقنية معلومات ومهندس أنظمة يجمع بين الأنظمة المدمجة، عمليات تقنية المعلومات المؤسسية، وتطوير الويب المتكامل.",
+    btn_view_work: "استكشاف الحلول",
     btn_get_in_touch: "تواصل معي",
     projects_title: "أبرز الأعمال",
     cat_hardware_title: "العتاد وإنترنت الأشياء",
     cat_software_title: "هندسة البرمجيات",
-    cat_design_title: "التصميم والهوية البصرية",
+    cat_cloud_title: "السحابة والأتمتة",
+    aws_ml_title: "مشروع التخرج: تعلم الآلة عبر AWS",
+    aws_ml_desc: "تصميم ونشر بنية تحتية قابلة للتطوير للنماذج التنبؤية باستخدام سحابة AWS. برمجة خوارزميات تعلم الآلة بلغة Python لمعالجة البيانات الضخمة، مع التركيز على التوافر العالي، كفاءة التكلفة، والنشر السحابي السلس.",
+    cat_creative_title: "مشاريع إبداعية",
     badge_featured: "مشروع مميز",
     turnstile_title: "بوابة العبور الذكية (Smart Turnstile)",
     turnstile_desc: "نظام تحكم ذكي في الدخول مدعوم بمعالج Raspberry Pi 4B و Arduino Mega. يدمج المصادقة عبر RFID/NFC مع التحكم الآلي بمحركات البوابات، وواجهة CustomTkinter حديثة مع الربط اللحظي بنظام إدارة التعلم (LMS) لتسجيل الحضور آلياً.",
@@ -344,7 +363,7 @@ const i18nDictionary = {
     gdg_title: "مجتمع GDG on Campus BATU",
     gdg_desc: "منصة مجتمعية ومنهج ورش عمل تقنية تأسست لتمكين الطلاب من تقنيات السحابة وأساسيات الأمان وتطوير البرمجيات التعاونية.",
     crafted_title: "هوية CRAFTED",
-    crafted_desc: "مشروع هوية بصرية وتصميم واجهات وتجربة مستخدم لعلامة أثاث عصرية متكاملة.",
+    crafted_desc: "مشروع هوية بصرية وتصميم أنظمة واجهات متكاملة لعلامة أثاث عصرية.",
     cybersecurity_title: "الأمن السيبراني والبنية التحتية",
     cybersecurity_lead: "متخصص في هندسة الأنظمة الدفاعية، تعزيز أمان أنظمة التشغيل، وتصميم البنى التحتية المرتكزة على الخصوصية.",
     cyber_card1_title: "تأمين أنظمة التشغيل وتحسين الأداء",
@@ -360,11 +379,22 @@ const i18nDictionary = {
     leadership_team_size: "5-8 مهندسين",
     leadership_domain: "إنترنت الأشياء والأتمتة",
     about_title: "نبذة عني",
-    about_p1: "أنا طالب تكنولوجيا معلومات متخصص في الأمن السيبراني، وشغوف ببناء تجارب رقمية آمنة وسهلة الاستخدام. أطور الأنظمة الخلفية وأدوات الأتمتة باستخدام Python و C++، وأبني تطبيقات ويب متكاملة باستخدام Laravel، وأنشر حلول إنترنت الأشياء عبر Raspberry Pi و ESP32 في بيئات Linux.",
-    about_p2: "عندما لا أكون منشغلاً بتأمين الأنظمة وكتابة الأكواد، أقضي وقتي في استكشاف الذكاء الاصطناعي التوليدي، والمساهمة في المصادر المفتوحة، وتنمية المجتمعات التقنية من خلال مجتمعات مطوري جوجل.",
+    about_p1: "أعمل كأخصائي تقنية المعلومات ومهندس نظم، وأمتلك سجلاً حافلاً في دمج الأنظمة المدمجة، وإدارة عمليات تقنية المعلومات المؤسسية، وتطوير الويب المتكامل. من خلال خبرتي العملية في إدارة مراكز بيانات الجامعة، وقيادة البنية التحتية التقنية، وهندسة أنظمة التحكم في الوصول المتكاملة بتقنيات إنترنت الأشياء، أختص في تحويل المتطلبات التشغيلية المعقدة إلى بنى تحتية مؤسسية موثوقة، آمنة، وقابلة للتوسع.",
+    experience_title: "الخبرات الميدانية والعمليات التقنية",
+    exp_batu_role: "أخصائي تقنية المعلومات",
+    exp_batu_desc: "توفير الدعم الفني الشامل وإدارة مراكز البيانات على مستوى الحرم الجامعي. مسؤول عن مراقبة استقرار الخوادم، ونشر أنظمة التشغيل، وصيانة البنية التحتية لضمان استمرارية الخدمات التقنية لأعضاء هيئة التدريس والطلاب.",
+    exp_ctu_role: "قائد عمليات تقنية المعلومات",
+    exp_ctu_desc: "إدارة تجميع العتاد والإشراف التقني على المعامل. تأسيس إجراءات صارمة لتدقيق الأجهزة، والحد بفعالية من أوقات التوقف عن العمل عبر ضمان استقرار بيئات التشغيل الأكاديمية.",
+    certifications_title: "الشهادات المهنية والتدريب",
+    cert_nvidia_title: "NVIDIA DLI",
+    cert_nvidia_desc: "الذكاء الاصطناعي للجميع: ممارسة الذكاء الاصطناعي التوليدي (سبتمبر 2025)<br>بناء تطبيقات النماذج اللغوية الكبيرة مع هندسة الأوامر (أكتوبر 2025)<br>بناء وكلاء RAG باستخدام النماذج اللغوية الكبيرة (أغسطس 2026)<br>البدء مع الذكاء الاصطناعي على أجهزة Jetson Nano (أكتوبر 2025)",
+    cert_iti_title: "معهد تكنولوجيا المعلومات (ITI)",
+    cert_iti_desc: "برنامج NVIDIA DLI: الذكاء الاصطناعي التوليدي (أكتوبر 2025)<br>مقدمة في التعلم العميق (فبراير 2026)",
+    cert_itida_title: "هيئة تنمية صناعة تكنولوجيا المعلومات (ITIDA)",
+    cert_itida_desc: "برنامج العمل الحر ITIDA GIGS (أبريل 2026)",
     contact_title: "لنعمل معاً",
     contact_desc: "متاح للفرص الجديدة والتعاون في المشاريع البرمجية والأنظمة المدمجة. يسعدني دائماً تواصلكم!",
-    btn_send_email: "إرسال بريد إلكتروني",
+    btn_send_email: "طلب استشارة",
     btn_my_links: "روابطي",
     btn_pgp_key: "مفتاح PGP العام",
     theme_dark: "داكن",
@@ -443,36 +473,47 @@ function getStoredLang() {
 }
 
 function applyLanguage(lang) {
-  const targetLang = lang === 'ar' ? 'ar' : 'en';
-  const isRtl = targetLang === 'ar';
+  // Fade out the DOM
+  document.body.style.opacity = '0';
+  
+  // Wait for fade out, then swap layout/text, then fade in
+  setTimeout(() => {
+    const targetLang = lang === 'ar' ? 'ar' : 'en';
+    const isRtl = targetLang === 'ar';
 
-  document.documentElement.setAttribute('lang', targetLang);
-  document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', targetLang);
+    document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
 
-  const currentLangLabels = document.querySelectorAll('#currentLangLabel, .currentLangLabel');
-  currentLangLabels.forEach(label => {
-    label.textContent = targetLang.toUpperCase();
-  });
+    const currentLangLabels = document.querySelectorAll('#currentLangLabel, .currentLangLabel');
+    currentLangLabels.forEach(label => {
+      label.textContent = targetLang.toUpperCase();
+    });
 
-  document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
-    const val = item.getAttribute('data-lang');
-    if (val === targetLang) {
-      item.classList.add('selected');
-      item.setAttribute('aria-selected', 'true');
-    } else {
-      item.classList.remove('selected');
-      item.setAttribute('aria-selected', 'false');
-    }
-  });
+    document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
+      const val = item.getAttribute('data-lang');
+      if (val === targetLang) {
+        item.classList.add('selected');
+        item.setAttribute('aria-selected', 'true');
+      } else {
+        item.classList.remove('selected');
+        item.setAttribute('aria-selected', 'false');
+      }
+    });
 
-  // Update i18n text nodes
-  const dict = i18nDictionary[targetLang] || i18nDictionary.en;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (dict && dict[key]) {
-      el.innerHTML = dict[key];
-    }
-  });
+    // Update i18n text nodes
+    const dict = i18nDictionary[targetLang] || i18nDictionary.en;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict && dict[key]) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    localStorage.setItem(LANG_KEY, targetLang);
+    
+    // Fade the DOM back in
+    document.body.style.opacity = '1';
+  }, 300);
 }
 
 // ============================================
